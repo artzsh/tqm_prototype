@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Система контроля{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <!-- Шапка -->
+  <header class="header">
+    <div class="header-left">
+      <img src="https://via.placeholder.com/30x30?text=★" alt="Logo" class="logo">
+      <span class="app-title">Система контроля</span>
+    </div>
+    <div class="header-right">
+      <a href="{{ url_for('choose_batch') }}" class="header-link">Контроль качества</a>
+      <a href="{{ url_for('logout') }}" class="header-link">Выход</a>
+    </div>
+  </header>
+  
+  <!-- Основной блок -->
+  <div class="main-container">
+    <!-- Боковая панель -->
+    <nav class="sidebar">
+      <ul>
+        <li><a href="{{ url_for('choose_batch') }}">Выбор партии</a></li>
+        <li><a href="{{ url_for('choose_batch') }}">Отчёты</a></li>
+      </ul>
+    </nav>
+    
+    <!-- Контент -->
+    <main class="content">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="flash-messages">
+            {% for category, message in messages %}
+              <div class="flash flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+      
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+  
+</body>
+</html>

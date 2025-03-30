@@ -1,0 +1,172 @@
+/* Общие стили */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  /* Шапка */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3aad3a; /* Зелёный */
+    color: #fff;
+    padding: 10px 20px;
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    margin-right: 10px;
+  }
+  
+  .app-title {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .header-right .header-link {
+    margin-left: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .header-right .header-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Основной контейнер */
+  .main-container {
+    display: flex;
+  }
+  
+  /* Боковая панель */
+  .sidebar {
+    width: 200px;
+    background-color: #2f8f2f; /* Более тёмный зелёный */
+    padding: 20px;
+    min-height: 100vh;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    margin-bottom: 15px;
+  }
+  
+  .sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .sidebar ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Основной контент */
+  .content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  /* Сообщения */
+  .flash-messages {
+    margin-bottom: 10px;
+  }
+  
+  .flash {
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+  }
+  
+  .flash-success {
+    background-color: #c8e6c9;
+  }
+  
+  .flash-danger {
+    background-color: #ffcdd2;
+  }
+  
+  .flash-warning {
+    background-color: #ffe0b2;
+  }
+  
+  .flash-info {
+    background-color: #b3e5fc;
+  }
+  
+  /* Форма */
+  .form-box {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+  }
+  
+  .form-box label {
+    margin-top: 10px;
+  }
+  
+  .form-box input[type="text"],
+  .form-box input[type="date"],
+  .form-box input[type="password"],
+  .form-box input[type="number"],
+  .form-box select {
+    padding: 5px;
+    margin-top: 5px;
+  }
+  
+  .form-box button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #3aad3a;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
+  .form-box button:hover {
+    background-color: #2f8f2f;
+  }
+  
+  /* Блоки паспорта */
+  .passport-block {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 5px solid #3aad3a;
+  }
+  
+  .passport-block h3 {
+    margin-top: 0;
+  }
+  
+  /* Чекбокс строка */
+  .checkbox-row {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .checkbox-row input {
+    margin-right: 5px;
+  }
+  
+  /* Блок отчёта */
+  .report-block {
+    background-color: #fff;
+    padding: 10px;
+    border-left: 5px solid #3aad3a;
+    margin-bottom: 15px;
+  }
+  

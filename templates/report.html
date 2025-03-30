@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Отчёт{% endblock %}
+
+{% block content %}
+<h2>Отчёт по партии: {{ batch.product_name }} ({{ batch.identifier }})</h2>
+
+<div class="report-block">
+  <p><strong>Пространственные замеры:</strong> {{ report.spatial_dims }}</p>
+  <p><strong>Визуальный осмотр (цвет):</strong> {{ report.visual_color }}</p>
+  <p><strong>Визуальный осмотр (поверхность):</strong> {{ report.visual_surface }}</p>
+  <p><strong>Плотность, г/см³:</strong> {{ report.density }}</p>
+  <p><strong>Точка кипения, °C:</strong> {{ report.boiling_point }}</p>
+  <p><strong>Температура плавления, °C:</strong> {{ report.melting_point }}</p>
+  <p><strong>Партия годна:</strong> {{ 'Да' if report.batch_good else 'Нет' }}</p>
+</div>
+
+<p>
+  <strong>Отчёт:</strong> 
+  <a href="{{ url_for('download_report', batch_id=batch.id) }}">Скачать</a>
+</p>
+{% endblock %}

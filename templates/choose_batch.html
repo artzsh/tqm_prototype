@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Выбор партии{% endblock %}
+
+{% block content %}
+<h2>Выбор партии для финального контроля</h2>
+<form method="post" class="form-box">
+  <label for="batch_date">Дата (yyyy-mm-dd):</label>
+  <input type="date" name="batch_date" id="batch_date" required>
+  
+  <label for="batch_id">Выберите партию:</label>
+  <select name="batch_id" id="batch_id" required>
+    <option value="">-- Выберите --</option>
+    {% for b in batches %}
+      {% if not b.final_control_done %}
+        <option value="{{ b.id }}">{{ b.product_name }} ({{ b.identifier }})</option>
+      {% endif %}
+    {% endfor %}
+  </select>
+  
+  <button type="submit">Далее</button>
+</form>
+{% endblock %}

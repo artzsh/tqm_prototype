@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Финальный контроль партии</title>
+</head>
+<body>
+    <h2>Финальный контроль партии: {{ batch.name }}</h2>
+    <h3>Паспорт изделия</h3>
+    <p>{{ batch.passport }}</p>
+    
+    <form method="post" enctype="multipart/form-data">
+        <h3>Результаты финальной проверки</h3>
+        <label>Замеры:</label><br>
+        <textarea name="measurements" rows="3" cols="40" placeholder="Введите данные замеров"></textarea><br><br>
+        
+        <label>Визуальный осмотр:</label><br>
+        <textarea name="visual_inspection" rows="3" cols="40" placeholder="Введите данные визуального осмотра"></textarea><br><br>
+        
+        <label>Лабораторные данные:</label><br>
+        <textarea name="lab_data" rows="3" cols="40" placeholder="Введите лабораторные данные"></textarea><br><br>
+        
+        <label>Загрузить фото:</label><br>
+        <input type="file" name="photos" multiple><br><br>
+        
+        <button type="submit">Сформировать отчёт</button>
+    </form>
+    
+    <p><a href="{{ url_for('quality_control') }}">Назад к списку партий</a></p>
+</body>
+</html>

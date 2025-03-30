@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Паспорт изделия{% endblock %}
+
+{% block content %}
+<h2>Паспорт изделия: {{ batch.product_name }} ({{ batch.identifier }})</h2>
+
+<div class="passport-block">
+  <h3>1. Данные о плавке</h3>
+  <p><strong>Температурный режим:</strong> {{ batch.smelting_data.temp_regime }}</p>
+  <p><strong>Время на каждом этапе:</strong> {{ batch.smelting_data.time_each_temp }}</p>
+  <p><strong>Общее время:</strong> {{ batch.smelting_data.total_time }}</p>
+  <p><strong>Сырьё:</strong> {{ batch.smelting_data.raw_materials }}</p>
+  <p><strong>Затраченное сырьё:</strong> {{ batch.smelting_data.consumed_amount }}</p>
+</div>
+
+<div class="passport-block">
+  <h3>2. Данные о рафинировании</h3>
+  <p><strong>Время:</strong> {{ batch.refining_data.duration }}</p>
+  <p><strong>Использованные химикаты:</strong> {{ batch.refining_data.chemicals }}</p>
+  <p><strong>Объём химикатов:</strong> {{ batch.refining_data.chemicals_volume }}</p>
+</div>
+
+<div class="passport-block">
+  <h3>3. Данные о охлаждении</h3>
+  <p><strong>Время охлаждения:</strong> {{ batch.cooling_data.cooling_time }}</p>
+  <p><strong>Деформация:</strong> {{ batch.cooling_data.deformation }}</p>
+</div>
+
+<div class="passport-block">
+  <h3>4. Данные о термической обработке</h3>
+  <p><strong>Температурный режим:</strong> {{ batch.heat_treatment_data.temp_regime }}</p>
+  <p><strong>Длительность:</strong> {{ batch.heat_treatment_data.duration }}</p>
+</div>
+
+<div class="passport-block">
+  <h3>5. Данные о механической обработке</h3>
+  <p><strong>Размер проката (или листа):</strong> {{ batch.mechanical_data.rolled_size }}</p>
+  <p><strong>Доп. информация:</strong> {{ batch.mechanical_data.additional_info }}</p>
+</div>
+
+<hr>
+
+<h3>Финальный контроль</h3>
+<form method="post" class="form-box">
+  <!-- Пространственные замеры -->
+  <label for="spatial_dims">Пространственные замеры (формат 10x20x30):</label>
+  <input type="text" name="spatial_dims" id="spatial_dims" placeholder="10x20x30" pattern="^\d+x\d+x\d+$" required>
+
+  <!-- Визуальный осмотр -->
+  <label for="visual_color">Визуальный осмотр (цвет):</label>
+  <input type="text" name="visual_color" id="visual_color" placeholder="Например, красноватый блеск" required>
+
+  <label for="visual_surface">Визуальный осмотр (поверхность):</label>
+  <input type="text" name="visual_surface" id="visual_surface" placeholder="Например, без дефектов" required>
+
+  <!-- Физические качества -->
+  <label for="density">Плотность, г/см³:</label>
+  <input type="number" step="0.01" name="density" id="density" placeholder="8.96" required>
+
+  <label for="boiling_point">Точка кипения, °C:</label>
+  <input type="number" name="boiling_point" id="boiling_point" placeholder="2567" required>
+
+  <label for="melting_point">Температура плавления, °C:</label>
+  <input type="number" name="melting_point" id="melting_point" placeholder="1085" required>
+
+  <!-- Чекбокс «Партия годна» -->
+  <div class="checkbox-row">
+    <input type="checkbox" name="batch_good" id="batch_good">
+    <label for="batch_good">Партия годна</label>
+  </div>
+
+  <button type="submit">Далее</button>
+</form>
+{% endblock %}

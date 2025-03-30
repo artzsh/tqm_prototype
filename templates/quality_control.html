@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Контроль качества</title>
+</head>
+<body>
+    <h2>Контроль качества – Финальный контроль</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <p>Выберите партию для проверки:</p>
+    <ul>
+    {% for batch in batches %}
+      <li>
+        <a href="{{ url_for('final_control', batch_id=batch.id) }}">{{ batch.name }}</a>
+      </li>
+    {% endfor %}
+    </ul>
+    <p><a href="{{ url_for('logout') }}">Выйти</a></p>
+</body>
+</html>
