@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Список отчетов{% endblock %}
+
+{% block content %}
+<h2>Список проведенных проверок</h2>
+{% if reports and reports|length > 0 %}
+  <table border="1" cellspacing="0" cellpadding="5">
+    <thead>
+      <tr>
+        <th>Дата контроля</th>
+        <th>Продукт</th>
+        <th>Идентификатор партии</th>
+        <th>Действия</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for report in reports %}
+      <tr>
+        <td>
+          {% if report.control_date %}
+            {{ report.control_date.strftime("%d.%m.%Y") if report.control_date.__class__.__name__ != "str" else report.control_date }}
+          {% else %}
+            -
+          {% endif %}
+        </td>
+        <td>{{ report.product_name }}</td>
+        <td>{{ report.identifier }}</td>
+        <td>
+          <a href="{{ url_for('report_view', batch_id=report.batch_id) }}">Просмотр</a> |
+          <a href="{{ url_for('download_report', batch_id=report.batch_id) }}">Скачать</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>Проверок не найдено.</p>
+{% endif %}
+{% endblock %}

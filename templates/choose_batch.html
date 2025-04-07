@@ -5,18 +5,24 @@
 <h2>Выбор партии для финального контроля</h2>
 <form method="post" class="form-box">
   <label for="batch_date">Дата (yyyy-mm-dd):</label>
-  <input type="date" name="batch_date" id="batch_date" required>
+  <input type="date" name="batch_date" id="batch_date" value="{{ selected_date|default('') }}" required>
   
-  <label for="batch_id">Выберите партию:</label>
-  <select name="batch_id" id="batch_id" required>
-    <option value="">-- Выберите --</option>
-    {% for b in batches %}
-      {% if not b.final_control_done %}
+  {% if batches and batches|length > 0 %}
+    <label for="batch_id">Выберите партию:</label>
+    <select name="batch_id" id="batch_id" required>
+      <option value="">-- Выберите --</option>
+      {% for b in batches %}
         <option value="{{ b.id }}">{{ b.product_name }} ({{ b.identifier }})</option>
-      {% endif %}
-    {% endfor %}
-  </select>
+      {% endfor %}
+    </select>
+  {% endif %}
   
-  <button type="submit">Далее</button>
+  <button type="submit">
+    {% if batches and batches|length > 0 %}
+      Далее
+    {% else %}
+      Показать партии
+    {% endif %}
+  </button>
 </form>
 {% endblock %}
